@@ -92,7 +92,10 @@ export default {
       return this.$store.state.selectedUser.name;
     },
     nameEquals(){
-      return this.username === this.selectedUserName
+      if(this.confirmedTask)
+        return this.username === this.selectedUserName
+      else
+        return true
     }
   },
   props: {
