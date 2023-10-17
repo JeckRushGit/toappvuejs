@@ -45,7 +45,7 @@ export default {
 
 <style scoped>
 .mytext{
-  width: 300  px;
+  width: 300px;
   display: block;
   white-space: nowrap;
   text-overflow: ellipsis;
