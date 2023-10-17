@@ -1,27 +1,37 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import LoginView from '../views/LoginView.vue'
+ import store from '../store/index'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'login',
+    component: LoginView
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    path: '/task',
+    name: 'task',
+    component: () => import('../views/TaskView.vue')
+  },
+  {
+    path: '/completedtasks',
+    name: 'completedtasks',
+    component: () => import('../views/CompletedTasksView.vue')
+  },
 ]
 
 const router = new VueRouter({
   routes
 })
+
+router.beforeEach((to,from,next) => {
+  if(to.name !== 'login' && store.state.selectedUser === null)
+    next('/');
+  else
+    next();
+});
 
 export default router
