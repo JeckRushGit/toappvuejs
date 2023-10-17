@@ -50,6 +50,12 @@
             </v-list-item-icon>
             <v-list-item-title>CompletedTasks</v-list-item-title>
           </v-list-item>
+          <v-list-item to="/albo">
+            <v-list-item-icon>
+              <v-icon>mdi-playlist-check</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Albo</v-list-item-title>
+          </v-list-item>
 
         </v-list-item-group>
       </v-list>

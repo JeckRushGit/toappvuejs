@@ -9,18 +9,28 @@ const routes = [
   {
     path: '/',
     name: 'login',
-    component: LoginView
+    component: LoginView,
+    auth: false
   },
   {
     path: '/task',
     name: 'task',
-    component: () => import('../views/TaskView.vue')
+    component: () => import('../views/TaskView.vue'),
+    auth: true
   },
   {
     path: '/completedtasks',
     name: 'completedtasks',
-    component: () => import('../views/CompletedTasksView.vue')
+    component: () => import('../views/CompletedTasksView.vue'),
+    auth: true
   },
+  {
+    path: '/albo',
+    name: 'albo',
+    component: () => import('../views/AlboView.vue'),
+    auth: false
+  }
+
 ]
 
 const router = new VueRouter({
@@ -28,7 +38,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to,from,next) => {
-  if(to.name !== 'login' && store.state.selectedUser === null)
+  if(to.name !== 'login' && to.auth === true && store.state.selectedUser === null)
     next('/');
   else
     next();
