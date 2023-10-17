@@ -10,25 +10,33 @@ const routes = [
     path: '/',
     name: 'login',
     component: LoginView,
-    auth: false
+    meta: {
+      auth: false
+    }
   },
   {
     path: '/task',
     name: 'task',
     component: () => import('../views/TaskView.vue'),
-    auth: true
+    meta: {
+      auth: true
+    }
   },
   {
     path: '/completedtasks',
     name: 'completedtasks',
     component: () => import('../views/CompletedTasksView.vue'),
-    auth: true
+    meta: {
+      auth: true
+    }
   },
   {
     path: '/albo',
     name: 'albo',
     component: () => import('../views/AlboView.vue'),
-    auth: false
+    meta: {
+      auth: false
+    }
   }
 
 ]
@@ -38,7 +46,8 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to,from,next) => {
-  if(to.name !== 'login' && to.auth === true && store.state.selectedUser === null)
+  // if page isn't login page and needs user authentication then redirect to login page
+  if(to.name !== 'login' && to.meta.auth === true && store.state.selectedUser === null)
     next('/');
   else
     next();

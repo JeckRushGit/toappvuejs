@@ -42,8 +42,6 @@ export default {
       return this.$store.state.selectedUser
     },
     confirmTasksList(){
-      // return this.$store.state.confirmedTasks.filter(entry => entry.task.description.toLowerCase().includes(this.textFieldModel.toLowerCase()) || entry.username.toLowerCase().includes(this.textFieldModel.toLowerCase()) || entry.username.includes(this.selectedUser.name))
-      // eslint-disable-next-line no-unused-vars
       return this.$store.state.confirmedTasks.filter(entry => {
         if(this.selectedUser !== null){
           return this.selectedUser.name === entry.username && entry.task.description.toLowerCase().includes(this.textFieldModel.toLowerCase());

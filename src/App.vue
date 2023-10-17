@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app dark elevation="4" dense hide-on-scroll>
+    <v-app-bar app dark elevation="4" dense>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-app-bar-title>TO-DO APP</v-app-bar-title>
       <v-spacer></v-spacer>
